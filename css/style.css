@@ -135,16 +135,16 @@ body {
      right:40%;
       top: 90px;
 }
-.yash-beach-section{
+/* .yash-beach-section{
     width: 100%;
-height: 900px;
+height: 200vh;
  background: url("../images/waterbg.png");
       background-size: cover;
     background-repeat: no-repeat;
      position: relative;
-     background-position: center;
+     background-position: top center;
 
-}
+} */
 
 .yash-welcome-lamp-right-image ,.yash-welcome-lamp-left-image ,.yash-welcome-nameletter-image{
     width: 100%;
@@ -531,7 +531,7 @@ position: relative;
 }
 .yash-things-container{
     width: 100%;
-    height: 100%;
+    height: 1000px;
     background-color: #b5996b;
     position: relative;
     background-image: url("../images/bodybg.png");
@@ -541,3 +541,135 @@ position: relative;
     padding: 50px 10px;
 
 }
+.yash-thigs-text-container{
+    width: 100%;
+    max-width:700px;
+    margin: 0 auto;
+    text-align: center;
+}
+.yash-thigs-text-container h2{
+font-size: 50px;
+font-style: 700;
+margin-bottom: 15px;
+color: #fff;
+
+}
+.yash-thigs-text-container p{
+font-size: 20px;
+font-style: 400;
+margin-bottom: 15px;
+color: #fff;
+text-transform: lowercase !important;
+
+}
+
+.yash-things-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.yash-things-grid__item {
+ 
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-direction: column;
+}
+.yash-things-grid__item img{
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+
+}
+.yash-things-grid__item p{
+    color: #4D370C;
+   font-weight: 600;
+
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .yash-things-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .yash-things-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.action-container{
+    margin: 50px auto;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+gap: 20px;
+flex-direction: column;
+color: #7d4b37;
+font-size: 30px;
+}
+.yash-beach-section{
+    position: relative;
+    width: 100%;
+    height: 800px;
+}
+.yash-clock-image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    top:-500px;
+}
+.yash-waterbg-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+
+}
+
+.yash-beach-text-container{
+    color: #FEF595;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    flex-direction: column;
+    gap: 20px;
+
+}
+    .yash-beach-text-container h3{
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .yash-beach-text-container h2{
+        font-size: 40px;
+        font-weight: 700;
+        
+    }
+    .flex{
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        max-width: 270px;
+        width: 100%;
+        font-size: 18px;
+    }
