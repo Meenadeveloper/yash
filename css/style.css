@@ -4,6 +4,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+  zoom: 1;
+}
+
 body {
       font-family: "Cinzel Decorative", serif;
   font-optical-sizing: auto;
@@ -44,6 +48,7 @@ body {
     max-height: 260px;
     position: absolute;
     top: -110px;
+    animation:  floatBoat 2s ease-in-out infinite;
 
 }
 .yash-boat-image{
@@ -114,6 +119,7 @@ body {
       position: absolute;
       left:200px;
       top: 90px;
+       animation: blink 1.5s infinite;
 }
 .welcome-lamp-right-container{
     width: 100%;
@@ -124,6 +130,7 @@ body {
       position: absolute;
      right:200px;
       top: 90px;
+       animation: blink 1.5s infinite;
 }
 .yash-welcome-nameletter-container{
  width: 100%;
@@ -211,6 +218,26 @@ text-transform: uppercase;
     letter-spacing: 0.2%;;
     
 }
+/* YASH animation */
+.yash-name {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+/* NIKKI animation (delayed) */
+.nikki-name {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  animation-delay: 1.5s;
+}
+
+/* Heart pulse */
+.heart {
+  font-size: 48px;
+  color: red;
+ animation: pulseGlow 1.2s ease-in-out infinite;
+  transform-origin: center;
+   display: inline-block;
+}
 
 .yash-and{
     text-transform: uppercase;
@@ -225,11 +252,13 @@ text-transform: uppercase;
     height:100px; position: absolute;
     top: 20%;
     left: 20px;
+    
 }
 .yash-single-leaf-img{
     width: 100%;
     height: 100%;
     object-fit: contain;
+   
 
 }
 .yash-green-leaf-left-decoration{
@@ -245,6 +274,7 @@ text-transform: uppercase;
     height:600px; position: absolute;
     top: 75%;
     left: 20px;
+      animation:  floatBoat 2s ease-in-out infinite;
 }
 .yash-left-leaf{
     width: 100%;
@@ -273,6 +303,7 @@ text-transform: uppercase;
     position: absolute;
     bottom: -400px;
     right: 0;
+      animation:  floatBoat 2s ease-in-out infinite;
 }
 .yash-auto-container{
     width: 100%;
@@ -629,6 +660,7 @@ font-size: 30px;
     object-fit: contain;
     position: relative;
     top:-500px;
+     animation:  floatBoat 2s ease-in-out infinite;
 }
 .yash-waterbg-image{
     width: 100%;
@@ -673,3 +705,160 @@ font-size: 30px;
         width: 100%;
         font-size: 18px;
     }
+
+    /* Boat up-down motion */
+@keyframes floatBoat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Boat movement */
+@keyframes moveBoat {
+  from {
+    left: -60px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* Blink effect */
+@keyframes blink {
+  0%, 100% {
+    filter: brightness(0.6);
+  }
+  50% {
+    filter: brightness(1.4)
+            drop-shadow(0 0 20px yellow);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.fade-top {
+  animation: fadeFromTop 2.5s ease-in-out ;
+}
+
+/* Box-shadow animation */
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px gold;
+  }
+  50% {
+    text-shadow: 0 0 20px gold;
+  }
+}
+.text-glow {
+  /* color: gold; */
+  animation: textGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(255, 45, 85, 0.6));
+  }
+  50% {
+    transform: scale(1.4);
+    filter: drop-shadow(0 0 12px rgba(255, 45, 85, 0.9))
+            drop-shadow(0 0 24px rgba(255, 45, 85, 0.6));
+  }
+}
+
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@media screen and (max-width:768px) {
+ .yash-meet-text-container,.yash-green-leaf-left-decoration, .event-tittle-container, .yash-auto-container ,.yash-car-container,.yash-flower-container,.yash-signal-container,.yash-single-leaf,.welcome-lamp-right-container,.welcome-lamp-left-container,.yash-green-leaf-right-decoration
+  
+  {
+    display: none;
+  }
+.yash-green-leaf-left-decoration {
+    width: 100%;
+    max-width: 50px;
+    height: 600px;
+    position: absolute;
+    top: 37%;
+     left: 0;
+}
+.yash-welcome-text-container{
+  left: 0;
+  top: 30%;
+}
+.yash-welcome-nameletter-container {
+   
+    top: 30px;
+    left: 15%;
+}
+    .events-wrapper {
+        grid-template-columns: 1fr;
+        margin-top: 400px;
+    }
+    .yash-meet-letter-container {
+    position: absolute;
+    top: 60%;
+    left: 37%;
+    }
+    .yash-meet-letter {
+    font-size: 29px;
+  
+}
+   .yash-clock-image {
+  
+    top: -300px;
+}
+.action-container{
+  font-size: 15px;
+  margin: 0;
+}
+.yash-beach-text-container {
+  
+    left: 0%;
+   
+    padding: 10px;
+}
+.yash-name-bg-container {
+    width: 100%;
+    max-width: 590px;
+    height: 450PX;
+}
+.yash-name, .nikki-name ,.yash-and {
+  font-size: 50px;
+}
+.yash-welcome-text-bold{
+  font-size: 15px;
+}
+}
+
