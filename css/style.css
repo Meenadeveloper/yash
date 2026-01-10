@@ -1109,13 +1109,58 @@ font-size: 30px;
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.2); }
 }
-
+.haldi-bg .event-text{
+  left:40%;
+}
 @media screen and (max-width:768px) {
- .yash-green-leaf-left-decoration,  .yash-auto-container ,.yash-flower-container,.yash-signal-container,.yash-single-leaf,.yash-green-leaf-right-decoration
+ .yash-single-leaf,.yash-green-leaf-right-decoration
   
   {
     display: none;
   }
+
+  .yash-auto-container {
+    width: 100%;
+    max-width: 150px;
+    position: absolute;
+    left: 0;
+    bottom: -115px;
+}
+.yash-signal-container {
+    width: 100%;
+    max-width: 50px;
+    height: 220px;
+    position: absolute;
+    top: 70%;
+    right: 0;
+}
+.yash-flower-container{
+  width: 90px;
+  height: 90px;
+      top: 85%;
+    left: 0px;
+}
+    .yash-green-leaf-left-decoration {
+        width: 100%;
+        max-width: 20px;
+        height: 200px;
+        position: absolute;
+        top: 67%;
+        left: 5px;
+    }
+    .yash-green-leaf-left-decoration img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .yash-green-leaf-left-decoration img:nth-child(2){
+      display: none;
+    }
+.yash-flower-container img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
   .yash-car-container{
    max-width: 160px;
         width: 100%;
@@ -1124,14 +1169,14 @@ font-size: 30px;
         position: absolute;
         bottom: -80px;
   }
-.yash-green-leaf-left-decoration {
+/* .yash-green-leaf-left-decoration {
     width: 100%;
     max-width: 50px;
     height: 600px;
     position: absolute;
     top: 37%;
      left: 0;
-}
+} */
 .yash-welcome-text-container{
   left: 0;
   top: 20%;
