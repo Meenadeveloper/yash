@@ -308,4 +308,78 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // --- Section 2 Entry Sequence Removed (Reverted due to visibility issues) ---
     // User requested undo locally.
+    // --- Meet Section Image Slider ---
+    // --- Meet Section Image Slider ---
+    const sliderWrapper = document.querySelector('.yash-meet-slider-wrapper');
+    const paginationContainer = document.querySelector('.yash-slider-pagination');
+    const slides = document.querySelectorAll('.yash-meet-slide');
+
+    if (sliderWrapper && slides.length > 0) {
+        let scrollInterval;
+        const scrollDelay = 3000; // 3 seconds
+
+        // Create Dots
+        if (paginationContainer) {
+            paginationContainer.innerHTML = ''; // Clear existing
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('pagination-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                   stopAutoScroll();
+                   sliderWrapper.scrollTo({
+                       left: sliderWrapper.clientWidth * index,
+                       behavior: 'smooth'
+                   });
+                   // Restart happens via scroll/interaction, but explicit restart is safer
+                   startAutoScroll();
+                });
+                paginationContainer.appendChild(dot);
+            });
+        }
+
+        const dots = document.querySelectorAll('.pagination-dot');
+
+        function updateActiveDot() {
+             const scrollLeft = sliderWrapper.scrollLeft;
+             const width = sliderWrapper.clientWidth;
+             const index = Math.round(scrollLeft / width);
+             
+             if (dots.length > 0) {
+                 dots.forEach((dot, i) => {
+                     if (i === index) dot.classList.add('active');
+                     else dot.classList.remove('active');
+                 });
+             }
+        }
+
+        function startAutoScroll() {
+            stopAutoScroll(); 
+            scrollInterval = setInterval(() => {
+                const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+                if (sliderWrapper.scrollLeft >= maxScrollLeft - 10) { 
+                    sliderWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    sliderWrapper.scrollBy({ left: sliderWrapper.clientWidth, behavior: 'smooth' });
+                }
+            }, scrollDelay);
+        }
+
+        function stopAutoScroll() {
+            if (scrollInterval) clearInterval(scrollInterval);
+        }
+
+        // Interaction Handling
+        sliderWrapper.addEventListener('touchstart', stopAutoScroll, { passive: true });
+        sliderWrapper.addEventListener('touchend', startAutoScroll);
+        sliderWrapper.addEventListener('mouseenter', stopAutoScroll);
+        sliderWrapper.addEventListener('mouseleave', startAutoScroll);
+        
+        // Sync Dots on Scroll
+        sliderWrapper.addEventListener('scroll', updateActiveDot);
+
+        // Start initially
+        startAutoScroll();
+    }
+
 });
