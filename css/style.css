@@ -117,8 +117,8 @@ body {
     height: 100%;
     overflow: hidden;
       position: absolute;
-      left:200px;
-      top: 90px;
+      left: 280px; /* Moved inward/adjusted */
+      top: 70px; /* Hanging from top */
        animation: blink 1.5s infinite;
 }
 .welcome-lamp-right-container{
@@ -128,8 +128,8 @@ body {
     height: 100%;
     overflow: hidden;
       position: absolute;
-     right:200px;
-      top: 90px;
+     right: 280px; /* Symmetrical */
+      top: 70px;
        animation: blink 1.5s infinite;
 }
 .yash-welcome-nameletter-container{
@@ -140,7 +140,7 @@ body {
     overflow: hidden;
       position: absolute;
      right:40%;
-      top: 90px;
+      top: 40px; /* Adjusted to sit between lamps */
 }
 /* .yash-beach-section{
     width: 100%;
@@ -166,6 +166,10 @@ height: 200vh;
     top:17%;
     left:26%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .yash-welcome-text{
     font-weight: 400;
@@ -186,6 +190,7 @@ text-transform: uppercase;
 }
 .yash-welcome-name{
   text-transform: uppercase;
+  color: #0C2C46;
   
 }
 .yash-invite-blue-text{
@@ -206,8 +211,12 @@ text-transform: uppercase;
     background-repeat: no-repeat;
      position: relative;
      background-position: center;
-     padding-top: 110px;
-
+     /* padding-top: 110px; Removed to prevent conflict with flex centering */
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin: 0 auto; /* Ensure the container itself is centered */
 }
 .yash-name  ,.nikki-name{
     text-transform: uppercase;
@@ -329,7 +338,7 @@ top: -200px;
 .event-tittle-container{
     width: 100%;
     max-width: 400px;
-   height: 230px;
+   /* height: 230px; */
     margin: 0px auto;
 }
 .event-tittle-image{
@@ -439,37 +448,62 @@ background-repeat: no-repeat;
   }
 }
 .bell-container{
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    background: #034750;
+    width: 45px;
+    height: 45px;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    transition: 0.5s ease-in-out;
 }
 .event-button{
-    background: transparent;
-    border: 1px solid #2a545a;
-      border-radius: 10px;
-      padding: 5px 10px;
-      background: #ffff; display: flex;
+    background: url('../images/meetdesignbg.png'); /* Peacock BG */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+      width: 250px;
+    height: 90px;
+    border: none;
+        padding: 6px 5px 6px 6px; 
+    /* Adjusted padding for pill look */
+    display: flex;
     align-items: center;
-    justify-content: center; gap:10px;
+    justify-content: center; 
+    gap:5px;
     cursor: pointer;
-     transition: 0.5s ease-in-out;
+    transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth spring-like */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Softer, larger shadow */
 }
 .event-button:hover{
-    background: #034750;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(3, 71, 80, 0.25); /* Colored shadow */
 }
 .event-button span{
     color: #034750;
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 700;
+    font-size: 16px; /* Slightly smaller for elegance */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     transition: 0.5s ease-in-out;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Ensure readability */
 }
 .event-button:hover .event-button-text{
-    color: #ffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Bell Shake Animation */
+@keyframes bellShake {
+    0% { transform: rotate(0); }
+    15% { transform: rotate(15deg); }
+    30% { transform: rotate(-15deg); }
+    45% { transform: rotate(10deg); }
+    60% { transform: rotate(-10deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0); }
+}
+
+.event-button:hover .bell-image {
+    animation: bellShake 0.6s ease-in-out;
 }
 .circle-event-button-container{
     display: flex;
@@ -477,7 +511,46 @@ background-repeat: no-repeat;
     align-items: center;
     margin: 0 auto;
     margin-top: 100px;
+    flex-direction: column; /* Stack text and button */
+    gap: 30px;
 }
+
+/* Generalized Glow Text Style */
+.common-glow-text {
+    font-family: 'Playfair Display', serif; 
+    font-size: 56px; 
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.9),
+        0 0 20px rgba(255, 255, 255, 0.7),
+        0 0 40px rgba(255, 255, 255, 0.5);
+    
+    /* Reveal Animation Start State */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s ease-out;
+    margin: 0; /* Reset default margins */
+}
+
+/* Specific adjustment for event title container */
+.event-tittle-container {
+    width: 100%;
+    max-width: 600px; /* Increased width for text */
+    /* height: 230px; Removed fixed height to fit text naturally */
+    min-height: 100px;
+    margin: 0px auto 40px auto; /* Added bottom margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .circle-event-button{
     width: 90px;
     height: 90px;
@@ -487,6 +560,7 @@ background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
 }
 .circle-event-button img{
     width: 100%;
@@ -511,8 +585,8 @@ background-repeat: no-repeat;
 .yash-meet-container{
      width: 100%;
      max-width: 1200px;
-height:100%;
-position: relative;
+     height:100%;
+     position: relative;
  
 }
 .yash-peacock-image{
@@ -637,6 +711,197 @@ text-transform: lowercase !important;
     grid-template-columns: 1fr;
   }
 }
+
+/* New Hero Section Styles */
+
+/* Hero Text */
+.hero-text-wrapper {
+    position: absolute;
+    top: 15%; /* Adjust as need to be in the sky */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 60px; /* Adjust size */
+    font-weight: 700;
+    color: #FFF8DC; /* Creamy white */
+    text-transform: uppercase;
+    /* Text Stroke Effect */
+    -webkit-text-stroke: 1px #FFD700; /* Gold stroke */
+    text-shadow: 0 0 15px rgba(255, 165, 0, 0.6); /* Orange glow */
+    letter-spacing: 2px;
+}
+
+.hero-amp {
+    font-size: 50px;
+    vertical-align: middle;
+}
+
+/* Flying Lamps */
+.flying-lamps-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.flying-lamp {
+    position: absolute;
+    width: 40px; /* Base size, can vary */
+    height: auto;
+    opacity: 0.9;
+    animation: floatLamp 4s ease-in-out infinite alternate;
+}
+
+/* Individual Lamp Positions & Sizes */
+.f-lamp-1 {
+    left: 10%;
+    top: 40%;
+    width: 35px;
+    animation-duration: 5s;
+    animation-delay: 0s;
+}
+
+.f-lamp-2 {
+    left: 20%;
+    top: 20%;
+    width: 50px; /* Closer/Bigger */
+    animation-duration: 6s;
+    animation-delay: 1s;
+}
+
+.f-lamp-3 {
+    left: 45%;
+    top: 5%;
+    width: 30px; /* Farther/Smaller */
+    animation-duration: 4.5s;
+    animation-delay: 0.5s;
+}
+
+.f-lamp-4 {
+    left: 70%;
+    top: 15%;
+    width: 45px;
+    animation-duration: 5.5s;
+    animation-delay: 1.5s;
+}
+
+.f-lamp-5 {
+    left: 85%;
+    top: 35%;
+    width: 38px;
+    animation-duration: 4.8s;
+    animation-delay: 2s;
+}
+
+.f-lamp-6 {
+    left: 55%;
+    top: 10%;
+    width: 25px;
+    animation-duration: 5.2s;
+    animation-delay: 0.8s;
+}
+
+/* Particles */
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.particle {
+    position: absolute;
+    animation: twinkle 3s infinite ease-in-out;
+    opacity: 0.8;
+}
+
+.part-1 {
+    left: 15%;
+    top: 30%;
+    width: 20px;
+    animation-delay: 0s;
+}
+
+.part-2 {
+    left: 80%;
+    top: 25%;
+    width: 15px;
+    animation-delay: 1s;
+}
+
+.part-3 {
+    left: 40%;
+    top: 10%;
+    width: 10px;
+    animation-delay: 0.5s;
+}
+
+.part-4 {
+    left: 60%;
+    top: 50%;
+    width: 25px;
+    animation-delay: 1.5s;
+}
+
+/* Animations */
+@keyframes floatLamp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@media screen and (min-width:770px) {
+  .body-wrapper{
+    padding-bottom: 200px;
+  }
+}
+/* Media Query for Mobile Text Sizing */
+@media (max-width: 768px) {
+  .smoky-container {
+    width: 100%;
+    max-width: 310px;
+    max-height: 150px;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 90px;
+    top: -90px;
+    transform: rotate(7deg);
+}
+    .hero-title {
+        font-size: 36px;
+    }
+    .hero-amp {
+        font-size: 30px;
+    }
+}
 .action-container{
     margin: 50px auto;
     width: 100%;
@@ -654,12 +919,23 @@ font-size: 30px;
     width: 100%;
     height: 800px;
 }
+
+.clock-wrapper{
+ display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: -400px;
+}
 .yash-clock-image{
     width: 100%;
     height: 100%;
     object-fit: contain;
     position: relative;
-    top:-500px;
+   
      animation:  floatBoat 2s ease-in-out infinite;
 }
 .yash-waterbg-image{
@@ -705,7 +981,42 @@ font-size: 30px;
         width: 100%;
         font-size: 18px;
     }
-
+.yash-bridegroom-image{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.yash-meet-intro-container{
+  margin: 20px auto;
+  width: 100%;
+  max-width: 500px;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/meetdesignbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  position: absolute;
+  top:6%;
+  left: 30%;
+  /* font-size: 29px; */
+  font-weight: bold;
+  color:#AF0000;
+  text-wrap: wrap;
+}
+.yash-meet-intro-container p{
+    font-size: 29px;
+    font-weight: bold;
+    color:#AF0000;
+    text-wrap: wrap;
+    padding: 15px 10px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
     /* Boat up-down motion */
 @keyframes floatBoat {
   0%, 100% {
@@ -800,10 +1111,18 @@ font-size: 30px;
 }
 
 @media screen and (max-width:768px) {
- .yash-meet-text-container,.yash-green-leaf-left-decoration, .event-tittle-container, .yash-auto-container ,.yash-car-container,.yash-flower-container,.yash-signal-container,.yash-single-leaf,.welcome-lamp-right-container,.welcome-lamp-left-container,.yash-green-leaf-right-decoration
+ .yash-green-leaf-left-decoration,  .yash-auto-container ,.yash-flower-container,.yash-signal-container,.yash-single-leaf,.yash-green-leaf-right-decoration
   
   {
     display: none;
+  }
+  .yash-car-container{
+   max-width: 160px;
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        position: absolute;
+        bottom: -80px;
   }
 .yash-green-leaf-left-decoration {
     width: 100%;
@@ -815,50 +1134,291 @@ font-size: 30px;
 }
 .yash-welcome-text-container{
   left: 0;
-  top: 30%;
+  top: 20%;
+  padding: 0px 10px;
+}
+.yash-welcome-text{
+  font-size: 14px;
+}
+.yash-welcome-text-bold{
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.yash-welcome-name{
+  font-size: 20px;
+}
+.yash-invite-blue-text{
+  font-size: 22px;
+  margin: 0 auto;
+}
+    .yash-name-bg-container {
+        width: 100%;
+        max-width: 250px;
+        height: 250PX;
+    }
+.yash-name, .nikki-name {
+  font-size: 20px;
+  line-height: 40px;
 }
 .yash-welcome-nameletter-container {
    
     top: 30px;
-    left: 15%;
+    left: 35%;
+}
+.yash-welcome-nameletter-container img{
+  width: 90px;
 }
     .events-wrapper {
         grid-template-columns: 1fr;
-        margin-top: 400px;
+        /* margin-top: 400px; */
     }
     .yash-meet-letter-container {
     position: absolute;
-    top: 60%;
-    left: 37%;
+    top: 62%;
+    left: 38%;
+    gap: 80px;
     }
     .yash-meet-letter {
-    font-size: 29px;
+    font-size: 20px;
   
 }
-   .yash-clock-image {
-  
-    top: -300px;
+.clock-wrapper {
+  top: -100px;
 }
+.yash-thigs-text-container h2 {
+    font-size: 30px;
+}
+.yash-thigs-text-container p {
+    font-size: 15px;
+    font-family:cursive;
+    font-weight: 400;
+}
+.body-wrapper{
+  overflow-x: hidden;
+}
+.common-glow-text {
+  font-size: 35px;
+}
+.welcome-lamp-left-container {
+    width: 100%;
+    max-width: 50px;
+    max-height: 90px;
+    height: 100%;
+   
+    left: 280px;
+    top: 30px;
+  }
+  .welcome-lamp-right-container{
+     top: 30px;
+      max-width: 50px;
+    max-height: 90px;
+  }
+  
 .action-container{
   font-size: 15px;
   margin: 0;
 }
 .yash-beach-text-container {
-  
     left: 0%;
-   
     padding: 10px;
 }
-.yash-name-bg-container {
+/* .yash-name-bg-container {
     width: 100%;
     max-width: 590px;
     height: 450PX;
-}
-.yash-name, .nikki-name ,.yash-and {
+} */
+/* .yash-name, .nikki-name ,.yash-and {
   font-size: 50px;
-}
+} */
 .yash-welcome-text-bold{
   font-size: 15px;
 }
 }
 
+
+/* Animation Helper */
+.char-reveal {
+    display: inline-block;
+    /* white-space: pre-wrap; removed to fix spacing issues, handled in JS via normalization */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: opacity, transform;
+}
+
+/* Things Item Hover Animations */
+@keyframes smoothShake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    75% { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.yash-things-grid__item img {
+    transition: transform 0.3s ease;
+}
+
+.yash-things-grid__item:hover img {
+    animation: smoothShake 0.5s ease-in-out;
+}
+
+.yash-things-grid__item p {
+    position: relative;
+    display: inline-block;
+}
+
+.yash-things-grid__item p::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #7d4b37; /* Updated color */
+    transition: width 0.3s ease-in-out;
+}
+
+.yash-things-grid__item:hover p::after {
+    width: 100%;
+}
+
+.char-space {
+    white-space: pre; /* Force space to render */
+    width: 0.25em;    /* Fallback width if fonts fail */
+    display: inline-block;
+}
+
+
+
+/* Sequence Reveal Classes */
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+/* Event Card Scroll Animation */
+.enter-from-left {
+    transform: translateX(-150px);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+.enter-from-bottom {
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+.enter-from-right {
+    transform: translateX(150px);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+
+.card-in-view {
+    transform: translate(0, 0) !important;
+    opacity: 1 !important;
+}
+
+/* Text Fade-in after Card Enter */
+.event-card .event-text {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card-in-view .event-text {
+    opacity: 1;
+    transition-delay: 0.8s; /* Wait for card animation (0.8s) to finish */
+}
+
+/* Clock Animation */
+@keyframes clockFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.yash-clock-image {
+    animation: clockFloat 3s ease-in-out infinite;
+    /* Ensure it has a position if it's absolute, but if existing CSS handles it, this just adds animation */
+}
+
+/* Mobile Adjustments for New Elements */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 32px; /* Smaller text on mobile */
+        letter-spacing: 1px;
+    }
+    .hero-text-wrapper {
+        top: 20%; /* Lower it slightly if needed, or keep 15% */
+        width: 90%; /* Prevent edge touching */
+    }
+    .hero-amp {
+        font-size: 28px;
+    }
+    
+    .flying-lamp {
+        max-width: 30px; /* Scale down lamps */
+        opacity: 0.8; /* Slightly less distraction */
+    }
+    
+    /* Adjust specific lamps if they block the view */
+    .f-lamp-2 {
+        display: none; /* Hide the big one on mobile to clear view */
+    }
+
+    .particles-container {
+        opacity: 0.6;
+    }
+    .yash-things-container{
+      height: 100%;
+    }
+
+    .yash-meet-text-container {
+    width: 100%;
+    max-width: 280px;
+    height: 285px;
+    background: url(../images/Rectangle.png);
+    background-size: contain;
+    background-color: #0C2C46;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 1%;
+    left: 13%;
+
+    }
+
+    .yash-meet-intro-container{
+  margin: 20px auto;
+  width: 100%;
+ max-width: 340px;
+        height: 100px;
+ 
+         top: -25%;
+        left: 5%;
+ 
+}
+.yash-meet-intro-container p{
+  font-size: 20px;
+}
+.yash-beach-text-container h3{
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.yash-beach-text-container h2 {
+    font-size: 30px;
+    font-weight: 700;
+}
+.yash-beach-text-container{
+  top: 47%;
+}
+}
